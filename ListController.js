@@ -5,6 +5,13 @@ module.exports.getTask = async (req, res) => {
     res.send(task); 
 };
 
+module.exports.removeAllTasks = async (req, res) => {
+    await ListModel.deleteMany({})
+    .then( () => {
+        res.send('All tasks were deleted');
+    });
+};
+
 module.exports.postTask = async (req, res) => {
     const { taskName } = req.body;
 
